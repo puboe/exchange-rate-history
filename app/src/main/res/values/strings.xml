@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Exchange rate history</string>
+
+    <string name="button_label">Request data</string>
 </resources>

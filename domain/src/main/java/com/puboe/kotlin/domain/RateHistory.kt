@@ -7,4 +7,8 @@ data class RateHistory(
     @SerializedName("start_at") val startAt: String,
     @SerializedName("end_at") val endAt: String,
     val rates: Map<String, Map<String, Double>>
-)
+) {
+    companion object {
+        fun empty() = RateHistory("", "", "", emptyMap())
+    }
+}

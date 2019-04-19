@@ -4,32 +4,33 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.DatePicker
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.google.android.material.snackbar.Snackbar
 import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
-import com.puboe.kotlin.domain.ApiDataRepository
 import com.puboe.kotlin.domain.Failure
 import com.puboe.kotlin.domain.RateHistory
 import kotlinx.android.synthetic.main.activity_main.*
 import java.text.SimpleDateFormat
 import java.util.*
+import javax.inject.Inject
 import kotlin.collections.ArrayList
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
+
+    @Inject
+    lateinit var useCase: GetRateHistory
 
     private lateinit var rateHistoryViewModel: RateHistoryViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        appComponent.inject(this)
 
         configureView()
-
-        val useCase = GetRateHistory(ApiDataRepository())
 
         rateHistoryViewModel =
             ViewModelProviders.of(this, RateHistoryViewModel.Factory(useCase)).get(RateHistoryViewModel::class.java)

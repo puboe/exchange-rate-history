@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 
 android {
@@ -41,6 +42,11 @@ dependencies {
     implementation "com.android.support:design:$supportVersion"
     implementation "android.arch.lifecycle:extensions:1.1.1"
 
+    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
+    compileOnly "javax.annotation:jsr250-api:1.0"
+    compileOnly "javax.inject:javax.inject:1"
+
+    implementation "com.google.dagger:dagger:$daggerVersion"
     implementation 'com.jjoe64:graphview:4.2.2'
 
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"

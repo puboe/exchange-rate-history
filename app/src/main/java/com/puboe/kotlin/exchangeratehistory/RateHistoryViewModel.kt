@@ -6,10 +6,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.puboe.kotlin.domain.Failure
 import com.puboe.kotlin.domain.RateHistory
 import com.puboe.kotlin.domain.Success
+import javax.inject.Inject
 
-
-class RateHistoryViewModel
-constructor(private val getRateHistory: GetRateHistory) : ViewModel() {
+class RateHistoryViewModel(private val getRateHistory: GetRateHistory) : ViewModel() {
 
     var rateHistoryLiveData: MutableLiveData<RateHistory> = MutableLiveData()
     var failureLiveData: MutableLiveData<Failure> = MutableLiveData()
@@ -31,7 +30,8 @@ constructor(private val getRateHistory: GetRateHistory) : ViewModel() {
         failureLiveData.value = failure
     }
 
-    class Factory(val useCase: GetRateHistory) : ViewModelProvider.Factory {
+    class Factory
+    @Inject constructor(val useCase: GetRateHistory) : ViewModelProvider.Factory {
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
             return RateHistoryViewModel(useCase) as T
         }

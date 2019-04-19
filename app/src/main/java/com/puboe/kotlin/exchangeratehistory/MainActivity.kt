@@ -1,10 +1,10 @@
 package com.puboe.kotlin.exchangeratehistory
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.DatePicker
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.google.android.material.snackbar.Snackbar
 import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter
@@ -21,7 +21,7 @@ import kotlin.collections.ArrayList
 class MainActivity : BaseActivity() {
 
     @Inject
-    lateinit var useCase: GetRateHistory
+    lateinit var viewModelFactory: ViewModelProvider.Factory
 
     private lateinit var rateHistoryViewModel: RateHistoryViewModel
 
@@ -33,17 +33,15 @@ class MainActivity : BaseActivity() {
         configureView()
 
         rateHistoryViewModel =
-            ViewModelProviders.of(this, RateHistoryViewModel.Factory(useCase)).get(RateHistoryViewModel::class.java)
+            ViewModelProviders.of(this, viewModelFactory).get(RateHistoryViewModel::class.java)
 
         // Create the observer which updates the UI.
         val rateObserver = Observer<RateHistory> { history ->
-            Log.e("TAG", history.toString())
             hideLoading()
             plotData(history)
         }
 
         val failureObserver = Observer<Failure> {
-            Log.e("TAG", "${it.message}")
             hideLoading()
             Snackbar.make(graph, it.message, Snackbar.LENGTH_LONG).show()
         }
@@ -52,13 +50,14 @@ class MainActivity : BaseActivity() {
         rateHistoryViewModel.failureLiveData.observeForever(failureObserver)
 
         button.setOnClickListener {
-            Log.e("TAG", extractDate(start_date))
-            Log.e("TAG", extractDate(end_date))
             showLoading()
             rateHistoryViewModel.loadRateHistory(extractDate(start_date), extractDate(end_date))
         }
     }
 
+    /**
+     * Plot the given data into the graph.
+     */
     private fun plotData(history: RateHistory) {
         val formatter = SimpleDateFormat("yyyy-MM-dd")
         val data = ArrayList<DataPoint>(history.rates.size)
@@ -97,6 +96,9 @@ class MainActivity : BaseActivity() {
         }
     }
 
+    /**
+     * Extract date from [DatePicker] instance.
+     */
     private fun extractDate(datePicker: DatePicker): String {
         return datePicker.year.toString() + "-" + datePicker.month.toString() + "-" + datePicker.dayOfMonth.toString()
     }

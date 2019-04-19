@@ -2,4 +2,7 @@
     <string name="app_name">Exchange rate history</string>
 
     <string name="button_label">Request data</string>
+    <string name="network_error_message">Network connection failed</string>
+    <string name="server_error_message">Server failure, please try again later.</string>
+    <string name="client_error_message">Data fetching failed</string>
 </resources>

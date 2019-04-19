@@ -6,7 +6,6 @@ import android.widget.DatePicker
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
-import com.google.android.material.snackbar.Snackbar
 import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
@@ -18,32 +17,30 @@ import java.util.*
 import javax.inject.Inject
 import kotlin.collections.ArrayList
 
-class MainActivity : BaseActivity() {
+class RateHistoryActivity : BaseActivity() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private lateinit var rateHistoryViewModel: RateHistoryViewModel
+    private val rateHistoryViewModel: RateHistoryViewModel by lazy {
+        ViewModelProviders.of(this, viewModelFactory).get(RateHistoryViewModel::class.java)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         appComponent.inject(this)
 
-        configureView()
+        setupView()
 
-        rateHistoryViewModel =
-            ViewModelProviders.of(this, viewModelFactory).get(RateHistoryViewModel::class.java)
-
-        // Create the observer which updates the UI.
         val rateObserver = Observer<RateHistory> { history ->
             hideLoading()
             plotData(history)
         }
 
-        val failureObserver = Observer<Failure> {
+        val failureObserver = Observer<Failure> { error ->
             hideLoading()
-            Snackbar.make(graph, it.message, Snackbar.LENGTH_LONG).show()
+            handleError(error)
         }
 
         rateHistoryViewModel.rateHistoryLiveData.observeForever(rateObserver)
@@ -85,12 +82,19 @@ class MainActivity : BaseActivity() {
         loading.visibility = View.GONE
     }
 
-    private fun configureView() {
+    private fun setupView() {
         start_date.maxDate = Calendar.getInstance().timeInMillis
         end_date.maxDate = start_date.maxDate
 
+        val calendar = Calendar.getInstance()
+        calendar.add(Calendar.DAY_OF_MONTH, -14)
+        start_date.updateDate(
+            calendar.get(Calendar.YEAR),
+            calendar.get(Calendar.MONTH),
+            calendar.get(Calendar.DAY_OF_MONTH)
+        )
+
         end_date.setOnDateChangedListener { _, year, monthOfYear, dayOfMonth ->
-            val calendar = Calendar.getInstance()
             calendar.set(year, monthOfYear, dayOfMonth)
             start_date.maxDate = calendar.timeInMillis
         }

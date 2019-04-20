@@ -16,21 +16,37 @@
             app:seriesType="line"
             android:id="@+id/graph"/>
 
+    <TextView
+            android:id="@+id/start_date_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/graph"
+            android:layout_marginLeft="16dp"
+            android:text="@string/start_date_label"/>
+
     <DatePicker
             android:id="@+id/start_date"
             android:datePickerMode="spinner"
             android:layout_margin="8dp"
             android:layout_width="wrap_content"
-            android:layout_below="@id/graph"
+            android:layout_below="@id/start_date_label"
             android:layout_centerHorizontal="true"
             android:calendarViewShown="false"
             android:layout_height="100dp"/>
+
+    <TextView
+            android:id="@+id/end_date_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/start_date"
+            android:layout_marginLeft="16dp"
+            android:text="@string/end_date_label"/>
 
     <DatePicker
             android:id="@+id/end_date"
             android:calendarViewShown="false"
             android:layout_margin="8dp"
-            android:layout_below="@id/start_date"
+            android:layout_below="@id/end_date_label"
             android:layout_centerHorizontal="true"
             android:layout_width="wrap_content"
             android:datePickerMode="spinner"

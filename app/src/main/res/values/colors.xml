@@ -8,4 +8,5 @@
     <color name="secondary_text">#FFFFFF</color>
     <color name="disabled">#757575</color>
     <color name="divider">#BDBDBD</color>
+    <color name="error">#CC0000</color>
 </resources>

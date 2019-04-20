@@ -17,13 +17,16 @@ abstract class BaseActivity : AppCompatActivity() {
 
     fun handleError(failure: Failure) {
         when (failure) {
-            is NetworkFailure -> showError(resources.getString(R.string.network_error_message))
-            is ServerFailure -> showError(resources.getString(R.string.server_error_message))
-            is ClientFailure -> showError(resources.getString(R.string.client_error_message))
+            is NetworkFailure -> showError(getString(R.string.network_error_message))
+            is ServerFailure -> showError(getString(R.string.server_error_message))
+            is ClientFailure -> showError(getString(R.string.client_error_message))
         }
     }
 
     private fun showError(message: String) {
-        Snackbar.make(findViewById<View>(android.R.id.content), message, Snackbar.LENGTH_LONG).show()
+        val snackbar = Snackbar.make(findViewById<View>(android.R.id.content), message, Snackbar.LENGTH_LONG)
+        val snackBarView = snackbar.view
+        snackBarView.setBackgroundColor(getColor(R.color.error))
+        snackbar.show()
     }
 }

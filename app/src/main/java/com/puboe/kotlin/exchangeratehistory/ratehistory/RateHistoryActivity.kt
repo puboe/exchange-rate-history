@@ -1,7 +1,6 @@
 package com.puboe.kotlin.exchangeratehistory.ratehistory
 
 import android.os.Bundle
-import android.view.View
 import android.widget.DatePicker
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -14,7 +13,7 @@ import com.puboe.kotlin.exchangeratehistory.core.Failure
 import com.puboe.kotlin.exchangeratehistory.core.base.BaseActivity
 import com.puboe.kotlin.exchangeratehistory.ratehistory.data.RateHistory
 import com.puboe.kotlin.exchangeratehistory.ratehistory.extension.adaptToGraph
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_rate_history.*
 import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
@@ -30,7 +29,7 @@ class RateHistoryActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_rate_history)
         appComponent.inject(this)
 
         setupView()
@@ -68,14 +67,6 @@ class RateHistoryActivity : BaseActivity() {
         graph.gridLabelRenderer.isHorizontalLabelsVisible = true
 
         graph.addSeries(series)
-    }
-
-    private fun showLoading() {
-        loading.visibility = View.VISIBLE
-    }
-
-    private fun hideLoading() {
-        loading.visibility = View.GONE
     }
 
     private fun setupView() {

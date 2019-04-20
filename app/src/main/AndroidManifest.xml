@@ -14,6 +14,7 @@
             android:theme="@style/AppTheme">
         <activity
                 android:name=".ratehistory.RateHistoryActivity"
+                android:label="@string/toolbar_title"
                 android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

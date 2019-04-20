@@ -1,9 +1,11 @@
 <resources>
     <string name="app_name">Exchange rate history</string>
 
+    <string name="toolbar_title">Exchange rate history EUR/USD</string>
+
     <string name="button_label">Request data</string>
-    <string name="start_date_label">Pick starting date:</string>
-    <string name="end_date_label">Pick ending date:</string>
+    <string name="start_date_label">Choose starting date:</string>
+    <string name="end_date_label">Choose ending date:</string>
 
     <string name="network_error_message">Network connection failed</string>
     <string name="server_error_message">Server failure, please try again later.</string>

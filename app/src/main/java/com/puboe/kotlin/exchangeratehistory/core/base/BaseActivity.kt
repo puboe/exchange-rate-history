@@ -1,6 +1,8 @@
 package com.puboe.kotlin.exchangeratehistory.core.base
 
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import com.puboe.kotlin.exchangeratehistory.MainApplication
@@ -17,6 +19,14 @@ abstract class BaseActivity : AppCompatActivity() {
         (application as MainApplication).appComponent
     }
 
+    private val contentView: ViewGroup by lazy {
+        findViewById<ViewGroup>(android.R.id.content)
+    }
+
+    private val loadingView: View by lazy {
+        LayoutInflater.from(this).inflate(R.layout.loading_view, contentView, false)
+    }
+
     fun handleError(failure: Failure) {
         when (failure) {
             is NetworkFailure -> showError(getString(R.string.network_error_message))
@@ -30,5 +40,13 @@ abstract class BaseActivity : AppCompatActivity() {
         val snackBarView = snackbar.view
         snackBarView.setBackgroundColor(getColor(R.color.error))
         snackbar.show()
+    }
+
+    fun showLoading() {
+        contentView.addView(loadingView)
+    }
+
+    fun hideLoading() {
+        contentView.removeView(loadingView)
     }
 }

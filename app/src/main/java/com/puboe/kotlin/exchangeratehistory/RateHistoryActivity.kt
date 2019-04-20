@@ -11,11 +11,12 @@ import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
 import com.puboe.kotlin.domain.Failure
 import com.puboe.kotlin.domain.RateHistory
+import com.puboe.kotlin.exchangeratehistory.core.base.BaseActivity
+import com.puboe.kotlin.exchangeratehistory.core.extension.adaptToGraph
 import kotlinx.android.synthetic.main.activity_main.*
 import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
-import kotlin.collections.ArrayList
 
 class RateHistoryActivity : BaseActivity() {
 
@@ -56,20 +57,14 @@ class RateHistoryActivity : BaseActivity() {
      * Plot the given data into the graph.
      */
     private fun plotData(history: RateHistory) {
-        val formatter = SimpleDateFormat("yyyy-MM-dd")
-        val data = ArrayList<DataPoint>(history.rates.size)
+        val data = history.adaptToGraph()
+        val series = LineGraphSeries<DataPoint>(data)
 
-        history.rates.forEach { key, value ->
-            data.add(DataPoint(formatter.parse(key), value["USD"] as Double))
-        }
-        // Sort data by date.
-        data.sortBy { it.x }
-
-        val series = LineGraphSeries<DataPoint>(data.toArray(emptyArray()))
-        graph.gridLabelRenderer.labelFormatter = (DateAsXAxisLabelFormatter(this))
         graph.viewport.setMinX(data.first().x)
         graph.viewport.setMaxX(data.last().x)
         graph.viewport.setXAxisBoundsManual(true)
+        graph.viewport.setScalable(true)
+        graph.gridLabelRenderer.isHorizontalLabelsVisible = true
 
         graph.addSeries(series)
     }
@@ -83,6 +78,11 @@ class RateHistoryActivity : BaseActivity() {
     }
 
     private fun setupView() {
+        setupDatePickers()
+        setupChart()
+    }
+
+    private fun setupDatePickers() {
         start_date.maxDate = Calendar.getInstance().timeInMillis
         end_date.maxDate = start_date.maxDate
 
@@ -98,6 +98,12 @@ class RateHistoryActivity : BaseActivity() {
             calendar.set(year, monthOfYear, dayOfMonth)
             start_date.maxDate = calendar.timeInMillis
         }
+    }
+
+    private fun setupChart() {
+        graph.gridLabelRenderer.labelFormatter = (DateAsXAxisLabelFormatter(this, SimpleDateFormat("dd/MM/yy")))
+        graph.gridLabelRenderer.isHorizontalLabelsVisible = false
+        graph.gridLabelRenderer.setHorizontalLabelsAngle(45)
     }
 
     /**

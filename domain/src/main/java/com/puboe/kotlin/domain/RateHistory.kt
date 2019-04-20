@@ -9,6 +9,8 @@ data class RateHistory(
     val rates: Map<String, Map<String, Double>>
 ) {
     companion object {
+        const val datePattern = "yyyy-MM-dd"
+        const val symbol = "USD"
         fun empty() = RateHistory("", "", "", emptyMap())
     }
 }

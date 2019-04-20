@@ -1,4 +1,4 @@
-package com.puboe.kotlin.exchangeratehistory.di
+package com.puboe.kotlin.exchangeratehistory.core.di
 
 import com.puboe.kotlin.exchangeratehistory.RateHistoryActivity
 import dagger.Component

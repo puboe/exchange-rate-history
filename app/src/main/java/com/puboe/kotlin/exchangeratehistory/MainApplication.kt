@@ -1,9 +1,9 @@
 package com.puboe.kotlin.exchangeratehistory
 
 import android.app.Application
-import com.puboe.kotlin.exchangeratehistory.di.AppModule
-import com.puboe.kotlin.exchangeratehistory.di.ApplicationComponent
-import com.puboe.kotlin.exchangeratehistory.di.DaggerApplicationComponent
+import com.puboe.kotlin.exchangeratehistory.core.di.AppModule
+import com.puboe.kotlin.exchangeratehistory.core.di.ApplicationComponent
+import com.puboe.kotlin.exchangeratehistory.core.di.DaggerApplicationComponent
 
 class MainApplication : Application() {
 

@@ -1,4 +1,4 @@
-package com.puboe.kotlin.exchangeratehistory.di
+package com.puboe.kotlin.exchangeratehistory.core.di
 
 import androidx.lifecycle.ViewModelProvider
 import com.puboe.kotlin.domain.ApiDataRepository

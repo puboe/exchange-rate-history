@@ -1,5 +1,7 @@
-package com.puboe.kotlin.domain
+package com.puboe.kotlin.exchangeratehistory.ratehistory.data.network
 
+import com.puboe.kotlin.exchangeratehistory.core.*
+import com.puboe.kotlin.exchangeratehistory.ratehistory.data.DataRepository
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

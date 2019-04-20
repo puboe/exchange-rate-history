@@ -1,10 +1,10 @@
 package com.puboe.kotlin.exchangeratehistory.core.di
 
 import androidx.lifecycle.ViewModelProvider
-import com.puboe.kotlin.domain.ApiDataRepository
-import com.puboe.kotlin.domain.DataRepository
-import com.puboe.kotlin.exchangeratehistory.GetRateHistory
-import com.puboe.kotlin.exchangeratehistory.RateHistoryViewModel
+import com.puboe.kotlin.exchangeratehistory.ratehistory.RateHistoryViewModel
+import com.puboe.kotlin.exchangeratehistory.ratehistory.data.DataRepository
+import com.puboe.kotlin.exchangeratehistory.ratehistory.data.network.ApiDataRepository
+import com.puboe.kotlin.exchangeratehistory.ratehistory.interactor.GetRateHistory
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton

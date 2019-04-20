@@ -3,10 +3,11 @@ package com.puboe.kotlin.exchangeratehistory
 import com.nhaarman.mockito_kotlin.given
 import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.verifyNoMoreInteractions
-import com.puboe.kotlin.domain.Callback
-import com.puboe.kotlin.domain.DataRepository
-import com.puboe.kotlin.domain.RateHistory
-import com.puboe.kotlin.domain.Success
+import com.puboe.kotlin.exchangeratehistory.core.Callback
+import com.puboe.kotlin.exchangeratehistory.ratehistory.data.DataRepository
+import com.puboe.kotlin.exchangeratehistory.ratehistory.data.RateHistory
+import com.puboe.kotlin.exchangeratehistory.core.Success
+import com.puboe.kotlin.exchangeratehistory.ratehistory.interactor.GetRateHistory
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.setMain
@@ -21,7 +22,8 @@ class GetRateHistoryTest {
     private val START_DATE = "2019-04-10"
     private val END_DATE = "2019-04-15"
 
-    private val expected = Success(RateHistory.empty())
+    private val expected =
+        Success(RateHistory.empty())
     @Mock
     private lateinit var dataRepository: DataRepository
     private lateinit var useCase: GetRateHistory

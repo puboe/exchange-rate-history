@@ -3,12 +3,12 @@ package com.puboe.kotlin.exchangeratehistory.core.base
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
-import com.puboe.kotlin.domain.ClientFailure
-import com.puboe.kotlin.domain.Failure
-import com.puboe.kotlin.domain.NetworkFailure
-import com.puboe.kotlin.domain.ServerFailure
 import com.puboe.kotlin.exchangeratehistory.MainApplication
 import com.puboe.kotlin.exchangeratehistory.R
+import com.puboe.kotlin.exchangeratehistory.core.ClientFailure
+import com.puboe.kotlin.exchangeratehistory.core.Failure
+import com.puboe.kotlin.exchangeratehistory.core.NetworkFailure
+import com.puboe.kotlin.exchangeratehistory.core.ServerFailure
 import com.puboe.kotlin.exchangeratehistory.core.di.ApplicationComponent
 
 abstract class BaseActivity : AppCompatActivity() {

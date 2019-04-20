@@ -1,4 +1,4 @@
-package com.puboe.kotlin.domain
+package com.puboe.kotlin.exchangeratehistory.ratehistory.data
 
 import com.google.gson.annotations.SerializedName
 

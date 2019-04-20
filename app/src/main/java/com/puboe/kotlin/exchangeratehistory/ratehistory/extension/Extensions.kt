@@ -1,9 +1,9 @@
-package com.puboe.kotlin.exchangeratehistory.core.extension
+package com.puboe.kotlin.exchangeratehistory.ratehistory.extension
 
 import com.jjoe64.graphview.series.DataPoint
-import com.puboe.kotlin.domain.RateHistory
-import com.puboe.kotlin.domain.RateHistory.Companion.datePattern
-import com.puboe.kotlin.domain.RateHistory.Companion.symbol
+import com.puboe.kotlin.exchangeratehistory.ratehistory.data.RateHistory
+import com.puboe.kotlin.exchangeratehistory.ratehistory.data.RateHistory.Companion.datePattern
+import com.puboe.kotlin.exchangeratehistory.ratehistory.data.RateHistory.Companion.symbol
 import java.text.SimpleDateFormat
 
 fun RateHistory.adaptToGraph(): Array<DataPoint> {

@@ -1,4 +1,4 @@
-package com.puboe.kotlin.domain
+package com.puboe.kotlin.exchangeratehistory.core
 
 abstract class Callback
 

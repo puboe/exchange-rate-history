@@ -1,11 +1,12 @@
-package com.puboe.kotlin.exchangeratehistory
+package com.puboe.kotlin.exchangeratehistory.ratehistory
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.puboe.kotlin.domain.Failure
-import com.puboe.kotlin.domain.RateHistory
-import com.puboe.kotlin.domain.Success
+import com.puboe.kotlin.exchangeratehistory.core.Failure
+import com.puboe.kotlin.exchangeratehistory.core.Success
+import com.puboe.kotlin.exchangeratehistory.ratehistory.data.RateHistory
+import com.puboe.kotlin.exchangeratehistory.ratehistory.interactor.GetRateHistory
 import javax.inject.Inject
 
 class RateHistoryViewModel(private val getRateHistory: GetRateHistory) : ViewModel() {

@@ -7,7 +7,7 @@
         android:layout_centerHorizontal="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".RateHistoryActivity">
+        tools:context=".ratehistory.RateHistoryActivity">
 
     <com.jjoe64.graphview.GraphView
             android:layout_width="match_parent"

@@ -1,4 +1,4 @@
-package com.puboe.kotlin.exchangeratehistory
+package com.puboe.kotlin.exchangeratehistory.ratehistory
 
 import android.os.Bundle
 import android.view.View
@@ -9,10 +9,11 @@ import androidx.lifecycle.ViewModelProviders
 import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
-import com.puboe.kotlin.domain.Failure
-import com.puboe.kotlin.domain.RateHistory
+import com.puboe.kotlin.exchangeratehistory.R
+import com.puboe.kotlin.exchangeratehistory.core.Failure
 import com.puboe.kotlin.exchangeratehistory.core.base.BaseActivity
-import com.puboe.kotlin.exchangeratehistory.core.extension.adaptToGraph
+import com.puboe.kotlin.exchangeratehistory.ratehistory.data.RateHistory
+import com.puboe.kotlin.exchangeratehistory.ratehistory.extension.adaptToGraph
 import kotlinx.android.synthetic.main.activity_main.*
 import java.text.SimpleDateFormat
 import java.util.*

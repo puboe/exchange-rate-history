@@ -1,6 +1,6 @@
 package com.puboe.kotlin.exchangeratehistory.core.di
 
-import com.puboe.kotlin.exchangeratehistory.RateHistoryActivity
+import com.puboe.kotlin.exchangeratehistory.ratehistory.RateHistoryActivity
 import dagger.Component
 import javax.inject.Singleton
 
@@ -8,5 +8,5 @@ import javax.inject.Singleton
 @Component(modules = [AppModule::class])
 interface ApplicationComponent {
 
-    fun inject(baseActivity: RateHistoryActivity)
+    fun inject(activity: RateHistoryActivity)
 }

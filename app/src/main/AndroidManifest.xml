@@ -13,7 +13,7 @@
             android:name=".MainApplication"
             android:theme="@style/AppTheme">
         <activity
-                android:name=".RateHistoryActivity"
+                android:name=".ratehistory.RateHistoryActivity"
                 android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

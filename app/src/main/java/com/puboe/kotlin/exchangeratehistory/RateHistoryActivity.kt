@@ -43,8 +43,8 @@ class RateHistoryActivity : BaseActivity() {
             handleError(error)
         }
 
-        rateHistoryViewModel.rateHistoryLiveData.observeForever(rateObserver)
-        rateHistoryViewModel.failureLiveData.observeForever(failureObserver)
+        rateHistoryViewModel.rateHistoryLiveData.observe(this, rateObserver)
+        rateHistoryViewModel.failureLiveData.observe(this, failureObserver)
 
         button.setOnClickListener {
             showLoading()

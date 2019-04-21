@@ -10,11 +10,11 @@ import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-class AppModule {
+open class AppModule {
 
     @Provides
     @Singleton
-    fun provideDataRepository(): DataRepository = ApiDataRepository()
+    open fun provideDataRepository(): DataRepository = ApiDataRepository()
 
     @Provides
     @Singleton

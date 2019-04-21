@@ -7,10 +7,9 @@ import com.puboe.kotlin.exchangeratehistory.core.di.DaggerApplicationComponent
 
 class MainApplication : Application() {
 
-    val appComponent: ApplicationComponent by lazy(mode = LazyThreadSafetyMode.NONE) {
+    var appComponent: ApplicationComponent =
         DaggerApplicationComponent
             .builder()
             .appModule(AppModule())
             .build()
-    }
 }

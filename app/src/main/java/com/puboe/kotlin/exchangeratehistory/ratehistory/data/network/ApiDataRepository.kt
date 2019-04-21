@@ -9,6 +9,7 @@ class ApiDataRepository : DataRepository {
 
     companion object {
         private const val BASE_URL = "https://api.exchangeratesapi.io/"
+        private const val SYMBOL = "USD"
     }
 
     private val service: ExchangeRateService
@@ -24,7 +25,7 @@ class ApiDataRepository : DataRepository {
 
     override fun getRateHistory(startDate: String, endDate: String): Callback {
         return try {
-            val call = service.getRateHistory("USD", startDate, endDate)
+            val call = service.getRateHistory(SYMBOL, startDate, endDate)
             val response = call.execute()
             when (response.isSuccessful) {
                 true -> Success(response.body())

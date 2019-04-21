@@ -1,4 +1,4 @@
-package com.puboe.kotlin.exchangeratehistory
+package com.puboe.kotlin.exchangeratehistory.ratehistory.interactor
 
 import com.nhaarman.mockito_kotlin.given
 import com.nhaarman.mockito_kotlin.verify
@@ -7,7 +7,6 @@ import com.puboe.kotlin.exchangeratehistory.core.Callback
 import com.puboe.kotlin.exchangeratehistory.ratehistory.data.DataRepository
 import com.puboe.kotlin.exchangeratehistory.ratehistory.data.RateHistory
 import com.puboe.kotlin.exchangeratehistory.core.Success
-import com.puboe.kotlin.exchangeratehistory.ratehistory.interactor.GetRateHistory
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.setMain
